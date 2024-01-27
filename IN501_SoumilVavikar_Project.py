@@ -69,6 +69,31 @@ def isfloat(num):
         return False
 
 
+# This method will write the records to the file.
+def write_records_to_file(filename, records, is_list):
+    # Writing the invalid records to the BADRECORDS.TXT file.
+    here = os.path.dirname(os.path.abspath(__file__))
+    filepath = os.path.join(here, filename)
+    file = open(filepath, "w")
+    if is_list:
+        for record in records:
+            file.write(record + "\n")
+    else:
+        file.write(records)
+    file.close()
+
+
+# Convert the student object into comma separated string in desired sequence
+def get_student_str(student):
+    return "{},{},{},{},{}".format(
+        student.student_id,
+        student.first_name,
+        student.last_name,
+        student.grade_score,
+        student.degree,
+    )
+
+
 # This method will print the initial menu for the program.
 def print_menu_capture_user_input():
     print("--------------------------------------------------------")
@@ -198,6 +223,44 @@ def is_valid_student_record(fields):
         raise ex
 
 
+# This method will take grade percentage as input and return the grade value between A to D and F for Fail.
+def calculate_student_grade(grade_percentage: float):
+    if 90 <= float(grade_percentage) <= 100:
+        return "A"
+    elif 80 <= float(grade_percentage) <= 89:
+        return "B"
+    elif 70 <= float(grade_percentage) <= 79:
+        return "C"
+    elif 60 <= float(grade_percentage) <= 69:
+        return "D"
+    else:
+        return "F"
+
+
+# This method will print the records in proper manner.
+def print_records(records):
+    for record in records:
+        print(record)
+
+
+# This method will calculate the average grade score and print it
+def calculate_avg_score(grade_scores, course):
+    if 0 == len(grade_scores):
+        return (
+            "No students present for the degree/course - {} in the Input file.".format(
+                course
+            )
+        )
+    else:
+        # getting the average grade score
+        avg_grade_score = round(mean(grade_scores), 1)
+        # getting average grade as per the average grade score
+        avg_grade = calculate_student_grade(avg_grade_score)
+        return "Average grade for degree/course {} is {}, and average grade score is {}".format(
+            course, avg_grade, avg_grade_score
+        )
+
+
 # This method will perform the selected action on the student data present in the input file.
 def perform_selected_action(action: int, students, invalid_records):
     if 1 == action:
@@ -209,9 +272,9 @@ def perform_selected_action(action: int, students, invalid_records):
     elif 4 == action:
         display_lowest_grade_record(students)
     elif 5 == action:
-        students_in_course(students, "MSIT")
+        students_in_course(students, "MSIT", True)
     elif 6 == action:
-        students_in_course(students, "MSCM")
+        students_in_course(students, "MSCM", True)
     elif 7 == action:
         display_students_sorted_by_id(students)
     elif 8 == action:
@@ -221,49 +284,109 @@ def perform_selected_action(action: int, students, invalid_records):
 # This method will calculate the avg grade for students, print it to the console and the output file.
 def display_avg_grade_for_students(students):
     print("display_avg_grade_for_students: Displaying the avg grade for students")
-    # TODO - Add logic
+    grade_scores = []
+    for student in students:
+        grade_scores.append(float(student.grade_score))
+    record = calculate_avg_score(grade_scores, "MSIT and MSCM combined")
+    print(record)
+    # Writing the student with highest grade to a file
+    write_records_to_file("AVERAGE_GRADE_FOR_ALL_STUDENTS.TXT", record, False)
 
 
 # This method will calculate the avg grade per program, print it to the console and the output file.
 def display_avg_grade_for_programs(students):
     print("display_avg_grade_for_programs: Displaying the avg grade for programs")
-    # TODO - Add logic
+    # Getting all the students as per course.
+    students_in_MSIT = students_in_course(students, "MSIT", False)
+    students_in_MSCM = students_in_course(students, "MSCM", False)
+    grade_scores_in_MSIT = []
+    grade_scores_in_MSCM = []
+    records = []
+    # Building a list of grade scores for students per course
+    if 0 != len(students_in_MSIT):
+        for student in students_in_MSIT:
+            grade_scores_in_MSIT.append(float(student.grade_score))
+        records.append(calculate_avg_score(grade_scores_in_MSIT, "MSIT"))
+
+    if 0 != len(students_in_MSCM):
+        for student in students_in_MSCM:
+            grade_scores_in_MSCM.append(float(student.grade_score))
+        records.append(calculate_avg_score(grade_scores_in_MSCM, "MSCM"))
+
+    # Printing and writing to he file, the calculated average grade scores for courses
+    print_records(records)
+    write_records_to_file("AVERAGE_GRADES_FOR_PROGRAMS.TXT", records, True)
 
 
 # This method will display the record with the highest grade and print it to the output file.
 def display_highest_grade_record(students):
     print("display_highest_grade_record: Displaying the record with highest grade")
-    # TODO - Add logic
+    student_with_highest_grades = get_student_str(
+        max(students, key=lambda student: student.grade_score)
+    )
+    print(student_with_highest_grades)
+    # Writing the student with highest grade to a file
+    write_records_to_file(
+        "STUDENT_WITH_HIGHEST_GRADES.TXT", student_with_highest_grades, False
+    )
 
 
 # This method will display the record with the lowest grade and print it to the output file.
 def display_lowest_grade_record(students):
     print("display_lowest_grade_record: Displaying the record with lowest grade")
-    # TODO - Add logic
+    student_with_lowest_grades = get_student_str(
+        min(students, key=lambda student: student.grade_score)
+    )
+    print(student_with_lowest_grades)
+    # Writing the student with lowest grade to a file
+    write_records_to_file(
+        "STUDENT_WITH_LOWEST_GRADES.TXT", student_with_lowest_grades, False
+    )
 
 
 # This method will display the student records for the course and print them to the output file.
-def students_in_course(students, course):
-    print(
-        "students_in_course: Displaying the students in the course: {}".format(course)
-    )
-    # TODO - Add logic
+# print_rec field is used to decide whether we want to print anything to console or file in this method or not.
+def students_in_course(students, course, print_rec):
+    if print_rec:
+        print("students_in_course: Displaying the students in the course: {}".format(course))
+
+    students_in_course = []
+    for student in students:
+        if course == student.degree:
+            if print_rec:
+                students_in_course.append(get_student_str(student))
+            else:
+                students_in_course.append(student)
+
+    if print_rec:
+        print_records(students_in_course)
+        # Writing the student list in the course in the file.
+        write_records_to_file(
+            "STUDENTS_IN_COURSE_{}.TXT".format(course), students_in_course, True
+        )
+
+    return students_in_course
 
 
 # This method will sort the students by id, print them on console and to the output file.
 def display_students_sorted_by_id(students):
-    print(
-        "display_students_sorted_by_id: Displaying list of students sorted by studentId"
-    )
-    # TODO - Add logic
+    print("display_students_sorted_by_id: Displaying list of students sorted by studentId")
+    students.sort(key=lambda student: student.student_id)
+    sorted_students = []
+    for student in students:
+        sorted_students.append(get_student_str(student))
+    print_records(sorted_students)
+    # Writing the sorted student list by student_id
+    write_records_to_file("SORTED_STUDENTS_BY_ID.TXT", sorted_students, True)
 
 
 # This method will display all the invalid records, and print them to the bad record file.
 def display_invalid_records(invalid_records):
-    print(
-        "display_invalid_records: Displaying the invalid records present in the input file."
-    )
-    # TODO - Add logic
+    print("display_invalid_records: Displaying the invalid records present in the input file.")
+    print_records(invalid_records)
+    # Writing the invalid records to the BADRECORDS.TXT file.
+    write_records_to_file("BADRECORDS.TXT", invalid_records, True)
+    print("\nBADRECORDS.TXT has been created.")
 
 
 # This is the main method of the program.
