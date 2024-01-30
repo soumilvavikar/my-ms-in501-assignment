@@ -1,0 +1,243 @@
+PS C:\Users\soumi> & C:/Users/soumi/AppData/Local/Programs/Python/Python311/python.exe "c:/Users/soumi/OneDrive/Documents/01_MS_in_IT/IN501 - Fundamentals of Computer Programming/Assignments/Unit 6/IN501_SoumilVavikar_Project.py"
+--------------------------------------------------------
+*************** Students Record Analysis ***************
+--------------------------------------------------------
+1 - Display average grade for all students
+2 - Display average grade for each program
+3 - Display highest grade record
+4 - Display lowest grade record
+5 - Display students in MSIT
+6 - Display students in MSCM
+7 - Display all students in sorted order by student ID
+8 - Display invalid records
+9 - Exit the program
+
+Please select one of the options from above (1 - 9)
+1
+display_avg_grade_for_students: Displaying the avg grade for students
+Average grade for degree/course MSIT and MSCM combined is C, and average grade score is 78.8
+--------------------------------------------------------
+*************** Students Record Analysis ***************
+--------------------------------------------------------
+1 - Display average grade for all students
+2 - Display average grade for each program 
+3 - Display highest grade record
+4 - Display lowest grade record
+5 - Display students in MSIT
+6 - Display students in MSCM
+7 - Display all students in sorted order by student ID
+8 - Display invalid records
+9 - Exit the program
+
+Please select one of the options from above (1 - 9)
+2
+display_avg_grade_for_programs: Displaying the avg grade for programs
+Average grade for degree/course MSIT is B, and average grade score is 82.7
+Average grade for degree/course MSCM is C, and average grade score is 75.5
+--------------------------------------------------------
+*************** Students Record Analysis ***************
+--------------------------------------------------------
+1 - Display average grade for all students
+2 - Display average grade for each program 
+3 - Display highest grade record
+4 - Display lowest grade record
+5 - Display students in MSIT
+6 - Display students in MSCM
+7 - Display all students in sorted order by student ID
+8 - Display invalid records
+9 - Exit the program
+
+Please select one of the options from above (1 - 9)
+3
+display_highest_grade_record: Displaying the record with highest grade
+3100,WHITNEY,HOUSTON,99,MSCM
+--------------------------------------------------------
+*************** Students Record Analysis ***************
+--------------------------------------------------------
+1 - Display average grade for all students
+2 - Display average grade for each program
+3 - Display highest grade record
+4 - Display lowest grade record
+5 - Display students in MSIT
+6 - Display students in MSCM
+7 - Display all students in sorted order by student ID
+8 - Display invalid records
+9 - Exit the program
+
+Please select one of the options from above (1 - 9)
+4
+display_lowest_grade_record: Displaying the record with lowest grade
+2345,EDDIE,VANHALEN,57,MSIT
+--------------------------------------------------------
+*************** Students Record Analysis ***************
+--------------------------------------------------------
+1 - Display average grade for all students
+2 - Display average grade for each program
+3 - Display highest grade record
+4 - Display lowest grade record
+5 - Display students in MSIT
+6 - Display students in MSCM
+7 - Display all students in sorted order by student ID
+8 - Display invalid records
+9 - Exit the program
+
+Please select one of the options from above (1 - 9)
+5
+students_in_course: Displaying the students in the course: MSIT
+2020,ANN,WILSON,94,MSIT
+2345,EDDIE,VANHALEN,57,MSIT
+1010,PATTI,SCIALFA,80.3,MSIT
+3020,TINA,TURNER,95,MSIT
+1723,NANCY,WILSON,87,MSIT
+--------------------------------------------------------
+*************** Students Record Analysis ***************
+--------------------------------------------------------
+1 - Display average grade for all students
+2 - Display average grade for each program
+3 - Display highest grade record
+4 - Display lowest grade record
+5 - Display students in MSIT
+6 - Display students in MSCM
+7 - Display all students in sorted order by student ID
+8 - Display invalid records
+9 - Exit the program
+
+Please select one of the options from above (1 - 9)
+6
+students_in_course: Displaying the students in the course: MSCM
+1001,STEVIE,NICKS,63,MSCM
+3100,WHITNEY,HOUSTON,99,MSCM
+3500,TRENT,REZNER,72,MSCM
+3133,DAVID,BOWIE,59,MSCM
+2743,MICHAEL,JACKSON,69.8,MSCM
+1723,ELTON,JOHN,90.4,MSCM
+--------------------------------------------------------
+*************** Students Record Analysis ***************
+--------------------------------------------------------
+1 - Display average grade for all students
+2 - Display average grade for each program
+3 - Display highest grade record
+4 - Display lowest grade record
+5 - Display students in MSIT
+6 - Display students in MSCM
+7 - Display all students in sorted order by student ID
+8 - Display invalid records
+9 - Exit the program
+
+Please select one of the options from above (1 - 9)
+7
+display_students_sorted_by_id: Displaying list of students sorted by studentId
+1001,STEVIE,NICKS,63,MSCM
+1010,PATTI,SCIALFA,80.3,MSIT
+1723,ELTON,JOHN,90.4,MSCM
+1723,NANCY,WILSON,87,MSIT
+2020,ANN,WILSON,94,MSIT
+2345,EDDIE,VANHALEN,57,MSIT
+2743,MICHAEL,JACKSON,69.8,MSCM
+3020,TINA,TURNER,95,MSIT
+3100,WHITNEY,HOUSTON,99,MSCM
+3133,DAVID,BOWIE,59,MSCM
+3500,TRENT,REZNER,72,MSCM
+--------------------------------------------------------
+*************** Students Record Analysis ***************
+--------------------------------------------------------
+1 - Display average grade for all students
+2 - Display average grade for each program
+3 - Display highest grade record
+4 - Display lowest grade record
+5 - Display students in MSIT
+6 - Display students in MSCM
+7 - Display all students in sorted order by student ID
+8 - Display invalid records
+9 - Exit the program
+
+Please select one of the options from above (1 - 9)
+8
+display_invalid_records: Displaying the invalid records present in the input file.
+1500,BRUCE,SPRINGSTEEN,110.9,MSCM
+2100,BILLY,JOEL,64,BSIT
+1075,CHER,,99,MSIT
+1800,,MADONNA,75.3,MSCM
+
+BADRECORDS.TXT has been created.
+--------------------------------------------------------
+*************** Students Record Analysis ***************
+--------------------------------------------------------
+1 - Display average grade for all students
+2 - Display average grade for each program
+3 - Display highest grade record
+4 - Display lowest grade record
+5 - Display students in MSIT
+6 - Display students in MSCM
+7 - Display all students in sorted order by student ID
+8 - Display invalid records
+9 - Exit the program
+
+Please select one of the options from above (1 - 9)
+0
+Invalid menu option selected. Valid values are between 1 and 9
+--------------------------------------------------------
+*************** Students Record Analysis ***************
+--------------------------------------------------------
+1 - Display average grade for all students
+2 - Display average grade for each program
+3 - Display highest grade record
+4 - Display lowest grade record
+5 - Display students in MSIT
+6 - Display students in MSCM
+7 - Display all students in sorted order by student ID
+8 - Display invalid records
+9 - Exit the program
+
+Please select one of the options from above (1 - 9)
+10
+Invalid menu option selected. Valid values are between 1 and 9
+--------------------------------------------------------
+*************** Students Record Analysis ***************
+--------------------------------------------------------
+1 - Display average grade for all students
+2 - Display average grade for each program
+3 - Display highest grade record
+4 - Display lowest grade record
+5 - Display students in MSIT
+6 - Display students in MSCM
+7 - Display all students in sorted order by student ID
+8 - Display invalid records
+9 - Exit the program
+
+Please select one of the options from above (1 - 9)
+wddss
+Invalid menu option selected. Valid values are between 1 and 9. Please try again.
+--------------------------------------------------------
+*************** Students Record Analysis ***************
+--------------------------------------------------------
+1 - Display average grade for all students
+2 - Display average grade for each program
+3 - Display highest grade record
+4 - Display lowest grade record
+5 - Display students in MSIT
+6 - Display students in MSCM
+7 - Display all students in sorted order by student ID
+8 - Display invalid records
+9 - Exit the program
+
+Please select one of the options from above (1 - 9)
+1.5
+Invalid menu option selected. Valid values are between 1 and 9. Please try again.
+--------------------------------------------------------
+*************** Students Record Analysis ***************
+--------------------------------------------------------
+1 - Display average grade for all students
+2 - Display average grade for each program
+3 - Display highest grade record
+4 - Display lowest grade record
+5 - Display students in MSIT
+6 - Display students in MSCM
+7 - Display all students in sorted order by student ID
+8 - Display invalid records
+9 - Exit the program
+
+Please select one of the options from above (1 - 9)
+9
+Exiting the program.
+PS C:\Users\soumi>

@@ -96,6 +96,11 @@ def get_student_str(student):
 
 # This method will print the initial menu for the program.
 def print_menu_capture_user_input():
+    print_menu()
+    return capture_action_to_perform()
+
+# This method will print the menu.
+def print_menu():
     print("--------------------------------------------------------")
     print("*************** Students Record Analysis ***************")
     print("--------------------------------------------------------")
@@ -110,34 +115,35 @@ def print_menu_capture_user_input():
     print("9 - Exit the program")
     print()
     print("Please select one of the options from above (1 - 9)")
-    return capture_action_to_perform()
-
-
+    
 # This method will capture the user input for which action has to be performed
 def capture_action_to_perform():
     action_to_perform = 0
-    try:
-        # Capture the user input
-        action_to_perform = int(input())
-        # Check if a valid menu option is entered.
-        if action_to_perform < 1 or action_to_perform > 9:
-            raise InvalidMenuOption(
-                "Invalid menu option selected. Valid values are between 1 and 9"
+    is_valid_input = False
+    while (False == is_valid_input):
+        try:
+            # Capture the user input
+            action_to_perform = int(input())
+            # Check if a valid menu option is entered.
+            if action_to_perform < 1 or action_to_perform > 9:
+                raise InvalidMenuOption(
+                    "Invalid menu option selected. Valid values are between 1 and 9"
+                )
+            is_valid_input = True
+            return action_to_perform
+        except InvalidMenuOption as imo:
+            is_valid_input = False
+            print(imo)
+            print_menu()
+        except ValueError as ve:
+            is_valid_input = False
+            print(
+                "Invalid menu option selected. Valid values are between 1 and 9. Please try again."
             )
-        # returning the valid action to perform.
-        return action_to_perform
-    except InvalidMenuOption as imo:
-        print(imo)
-        action_to_perform = 0
-        print_menu_capture_user_input()
-        return capture_action_to_perform()
-    except ValueError as ve:
-        print(
-            "Invalid menu option selected. Valid values are between 1 and 9. Please try again."
-        )
-        action_to_perform = 0
-        print_menu_capture_user_input()
-        return capture_action_to_perform()
+            print_menu()
+    
+    # returning the valid action to perform.
+    return action_to_perform
 
 
 # This method will read the input file
